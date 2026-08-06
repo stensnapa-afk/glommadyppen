@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none" role="img" aria-label="Snapa">
+  <polygon points="110,60 85,103.3 35,103.3 10,60 35,16.7 85,16.7"
+    stroke="currentColor" stroke-width="8" stroke-linejoin="round"/>
+  <path d="M77 44 C77 34 67 30 57 32 C46 34 40 42 46 51 C50 57 61 60 70 66 C80 72 80 85 68 90 C57 94 45 90 42 80"
+    stroke="currentColor" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

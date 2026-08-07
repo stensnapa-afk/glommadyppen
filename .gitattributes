@@ -1,0 +1,26 @@
+# Normaliser linjeslutt: alle tekstfiler lagres med LF i git, checkes ut med LF
+# (stopper "LF will be replaced by CRLF"-støy + at filer vises endret pga. autocrlf).
+* text=auto eol=lf
+
+# Binærfiler skal aldri linjeslutt-normaliseres.
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.webp  binary
+*.avif  binary
+*.ico   binary
+*.svg   text
+*.woff  binary
+*.woff2 binary
+*.ttf   binary
+*.otf   binary
+*.eot   binary
+*.pdf   binary
+*.zip   binary
+*.gz    binary
+*.mp4   binary
+*.webm  binary
+*.mp3   binary
+*.wav   binary
+*.epub  binary

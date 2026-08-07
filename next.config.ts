@@ -1,5 +1,19 @@
 import type { NextConfig } from "next";
 import { withSentryConfig } from "@sentry/nextjs";
+import { execSync } from "node:child_process";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
+
+// Build-sha + versjon bakes inn ved bygg. Leses av /api/version (helse-probe).
+function buildSha(): string {
+  if (process.env.VERCEL_GIT_COMMIT_SHA) return process.env.VERCEL_GIT_COMMIT_SHA.slice(0, 7);
+  try {
+    return execSync("git rev-parse --short HEAD", { encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] }).trim();
+  } catch {
+    return "unknown";
+  }
+}
+const pkg = JSON.parse(readFileSync(join(__dirname, "package.json"), "utf8"));
 
 const securityHeaders = [
   { key: "X-Frame-Options", value: "DENY" },
@@ -21,6 +35,7 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
+  env: { BUILD_SHA: buildSha(), APP_VERSION: pkg.version },
   turbopack: {
     root: __dirname,
   },

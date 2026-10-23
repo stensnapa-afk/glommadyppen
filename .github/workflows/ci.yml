@@ -14,6 +14,13 @@ jobs:
     env:
       NEXT_TELEMETRY_DISABLED: "1"
       CI: "true"
+      SKIP_ENV_VALIDATION: "1"
+      # Dummy build-tids-verdier: moduler validerer ofte env ved last (iron-session krever
+      # SESSION_SECRET>=32, DB-klienter krever DATABASE_URL satt). Build kobler/bruker dem ikke
+      # reelt; dette er trygge placeholdere saa page-data-innsamling ikke faller paa "env not set".
+      DATABASE_URL: "postgresql://ci:ci@localhost:5432/ci"
+      SESSION_SECRET: "ci-dummy-session-secret-0123456789abcdef"
+      ANTHROPIC_API_KEY: "sk-ci-dummy"
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
